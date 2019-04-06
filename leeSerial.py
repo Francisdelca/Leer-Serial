@@ -3,7 +3,10 @@ arduino = Serial('/dev/ttyACM0',9600, timeout = 1)
 
 while True:
     try:
-        a = arduino.readline()
+        a = arduino.readline() #se lee lo que llega por el serial
+        file = open('sensor.txt','w') # cracion del archivo que guarda el valor
+        file.write(a)
+        file.close()
         print(a)
     except keyboardInterrupt:
         break
